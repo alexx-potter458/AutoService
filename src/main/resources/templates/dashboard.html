@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <title>Dashboard</title>
+</head>
+<body>
+    
+    <div class="container-fluid d-flex flex-wrap justify-content-center">
+        <div th:each="elem, props: ${products}" class="card w-25 m-5">
+            <img th:src="${elem.image}" class="card-img-top" style="width:100%; object-fit:cover;" alt="..." src="">
+            <div class="card-body">
+              <h5 class="card-title" th:text="${elem.name}">Card title</h5>
+              <p class="card-text" th:text="${elem.description}"></p>
+                <p class="card-text" th:text="${elem.price}"></p>
+              <a th:href="@{/services/{id}(id=${elem.id})}" class="btn btn-primary">Go to product</a>
+                <a th:href="@{/shopping-cart?item={id}(id=${elem.id})}" class="btn btn-success">Add to cart</a>
+            </div>
+          </div>
+    </div>
+
+
+</body>
+</html>

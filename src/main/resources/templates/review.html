@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+    <script src="https://kit.fontawesome.com/74a4ff3420.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class="container m-5" >
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Name</th>
+                <th scope="col">Rating</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="elem, props: ${reviews}">
+                <th scope="row" th:text="${elem.id}"></th>
+                <td  th:text="${elem.title}">
+                <td  th:text="${elem.description}">
+                <td th:text="${elem.firstName}">
+                <td class="rating" th:text="${elem.rating}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let ratings = document.getElementsByClassName('rating');
+
+        for(let rating of ratings) {
+            let numberOfStars = Number(rating.innerHTML);
+            rating.innerHTML = '';
+
+            for(let i = 0; i < numberOfStars; i++)
+                rating.innerHTML +=('<i class="fas fa-star"></i>');
+                for(let i = 0; i < 5-numberOfStars; i++)
+                rating.innerHTML +=('<i class="far fa-star"></i>');
+
+        }
+
+    </script>
+</body>
+</html>

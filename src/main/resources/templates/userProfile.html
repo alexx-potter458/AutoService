@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <title>User profile</title>
+</head>
+<body>
+
+    <div class="container w-40 my-5">
+        <form method="get" th:action="@{/users/{id}(id=${user.id})}">
+
+            <div class="mb-3">
+                <label for="firstNameInput" class="form-label">First name</label>
+                <input th:value="${user.firstName}" type="text" name="firstName" class="form-control" id="firstNameInput">
+            </div>
+    
+            <div class="mb-3">
+                <label for="lastNameInput" class="form-label">Last name</label>
+                <input type="text"  th:value="${user.lastName}" name="lastName" class="form-control" id="lastNameInput">
+            </div>
+    
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" name="email" class="form-control" th:value="${user.email}" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+    
+            <div class="mb-3">
+                <label for="phoneInput" class="form-label">Phone</label>
+                <input type="text" name="phone" class="form-control" th:value="${user.phone}" id="phoneInput">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+    
+        </form>
+    </div>
+
+</body>
+</html>
